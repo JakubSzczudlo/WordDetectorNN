@@ -61,9 +61,9 @@ def train(net, optimizer, loader, writer):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--batch_size', type=int, default=10)
-    parser.add_argument('--caching', action='store_true')
-    parser.add_argument('--data_dir', type=Path, required=True)
-    parser.add_argument('--pretrained', action='store_true')
+    parser.add_argument('--caching', default='true')
+    parser.add_argument('--data_dir', type=Path, default="../../data/detector_data")
+    parser.add_argument('--pretrained', default='true')
     parser.add_argument('--val_freq', type=int, default=1)
     parser.add_argument('--early_stopping', type=int, default=50)
     args = parser.parse_args()
