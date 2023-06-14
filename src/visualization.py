@@ -22,9 +22,9 @@ def visualize_and_plot(img, aabbs):
     plt.show()
 
 
-def crop_and_save(img, aabbs, path_to_save):
-    i = 0
+def crop_and_save(counter, img, aabbs, path_to_save):
     for aabb in aabbs:
-        i += 1
         img_sliced = img[int(aabb.ymin):int(aabb.ymax), int(aabb.xmin): int(aabb.xmax)]
-        cv2.imwrite(path_to_save + "/crop_"+str(i)+".png", img_sliced)
+        cv2.imwrite(path_to_save + "/crop_" + str(counter) + ".png", img_sliced)
+        counter += 1
+    return counter
