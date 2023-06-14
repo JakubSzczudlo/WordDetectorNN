@@ -4,9 +4,9 @@ import cv2
 import numpy as np
 import torch
 
-from aabb import AABB
-from coding import encode
-from utils import compute_scale_down, prob_true
+from WordDetectorNN.src.aabb import AABB
+from WordDetectorNN.src.coding import encode
+from WordDetectorNN.src.utils import compute_scale_down, prob_true
 
 DataLoaderItem = namedtuple('DataLoaderItem', 'batch_imgs,batch_gt_maps,batch_aabbs')
 
@@ -147,7 +147,7 @@ class DataLoaderImgFile:
 
     def get_original_img(self, item):
         img = cv2.imread(self.fn_imgs[item], cv2.IMREAD_GRAYSCALE)
-        img = (img / 255 - 0.5).astype(np.float32)
+        # img = (img / 255 - 0.5).astype(np.float32)
         return img
 
     def __len__(self):

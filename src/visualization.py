@@ -19,5 +19,12 @@ def visualize_and_plot(img, aabbs):
     for aabb in aabbs:
         plt.plot([aabb.xmin, aabb.xmin, aabb.xmax, aabb.xmax, aabb.xmin],
                  [aabb.ymin, aabb.ymax, aabb.ymax, aabb.ymin, aabb.ymin])
-
     plt.show()
+
+
+def crop_and_save(img, aabbs, path_to_save):
+    i = 0
+    for aabb in aabbs:
+        i += 1
+        img_sliced = img[int(aabb.ymin):int(aabb.ymax), int(aabb.xmin): int(aabb.xmax)]
+        cv2.imwrite(path_to_save + "/crop_"+str(i)+".png", img_sliced)
