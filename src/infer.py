@@ -16,6 +16,8 @@ def main(path_to_test_folder):
     parser.add_argument('--device', choices=['cpu', 'cuda'], default='cuda')
     args = parser.parse_args()
 
+    if not torch.cuda.is_available():
+        args.device = 'cpu'
     net = WordDetectorNet()
     net.load_state_dict(torch.load('../WordDetectorNN/model/weights', map_location=args.device))
     net.eval()
